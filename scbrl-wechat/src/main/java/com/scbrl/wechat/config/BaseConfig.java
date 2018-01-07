@@ -8,16 +8,18 @@ package com.scbrl.wechat.config;
  * @Description： 
  */
 public class BaseConfig {
-	
-	public static final String SERVICE_HOST_URL = "http://liuwb730.vicp.io";//本地花生壳 - 开发测试用回调地址
+
+    public static final String SERVICE_HOST_URL = "http://brl.free.ngrok.cc";//本地花生壳 - 开发测试用回调地址
+	//public static final String SERVICE_HOST_URL = "http://liuwb730.vicp.io";//本地花生壳 - 开发测试用回调地址
 	//public static final String SERVICE_HOST_URL = "http://wuyu22222.vicp.cc";//域名地址
 	
 
 	/**
 	 * @微信公众号
 	 */
-	public static final String APPID    = "wx7f9cde2a7748cc24";      
-    public static final String SECRET   = "0d7632fd294f45146a04391e5bc68055";
+	public static final String APPID    = "wx8027dffd0e25c757";
+    public static final String SECRET   = "bafebe32ba69b1b716746930fe2cbf01";
+    public static final String AUTH_TOKEN   = "bruceliu";//开发模式下公众号认证配置的Token（需与此一致！！）
     public static final String PARTNER  = "1415244102"; 
     public static final String PARTNER_KEY = "0d7632fd294f45146a04391e5bc68055";
     public static String notifyurl = "/pay/wxPayCallback";// 微信公众号回调地址 测试.

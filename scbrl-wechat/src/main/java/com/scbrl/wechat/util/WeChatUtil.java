@@ -157,12 +157,13 @@ public class WeChatUtil {
      * @param accessToken
      */
     public static Map<String,Object> wxCreateMenu(String accessToken){
-        String menuUrl = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN";
+        String menuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
         menuUrl = menuUrl.replace("ACCESS_TOKEN",accessToken);
         try{
             String param = JsonUtil.toJson(getWxMenu());
-            param = new String(param.getBytes("gbk"));
+            param = new String(param.getBytes("utf-8"));
             String result = HttpUtil.sendPost(menuUrl, param);
+            System.err.println(JsonUtil.toJson(result));
             Map<String,Object> mp =  JsonUtil.toMap(result);
             return mp ;
         }catch (Exception e){
@@ -203,7 +204,7 @@ public class WeChatUtil {
      */
     public static boolean checkSignature(String signature, String timestamp, String nonce) {
         // 对token、timestamp和nonce按字典排序
-        String[] paramArr = new String[] { "hmw.me", timestamp, nonce };
+        String[] paramArr = new String[] { BaseConfig.AUTH_TOKEN, timestamp, nonce };
         Arrays.sort(paramArr);
         // 将排序后的结果拼接成一个字符串
         String content = paramArr[0].concat(paramArr[1]).concat(paramArr[2]);
@@ -298,23 +299,23 @@ public class WeChatUtil {
         Map<String,Object> menu = new HashMap<>();
         List<Map<String,Object>> mpList = new ArrayList<>();
         Map<String,Object> mapA_Menu = new HashMap<>();
-        mapA_Menu.put("name","开摩邦");
+        mapA_Menu.put("name","Bruce");
         List<Map<String,Object>> mpAList = new ArrayList<>();
         Map<String,Object> mapA1 = new HashMap<>();
         mapA1.put("type","view");
-        mapA1.put("name","用户入驻");
-        mapA1.put("url","http://15558f1v51.imwork.net/api/wx/league/main");
+        mapA1.put("name","菜单一");
+        mapA1.put("url","http://brl.free.ngrok.cc/test");
         mpAList.add(mapA1);
         Map<String,Object> mapA2 = new HashMap<>();
         mapA2.put("type","view");
-        mapA2.put("name","我要推广");
-        mapA2.put("url","http://15558f1v51.imwork.net/api/wx/my/share");
+        mapA2.put("name","菜单二");
+        mapA2.put("url","http://brl.free.ngrok.cc/test");
         mpAList.add(mapA2);
         mapA_Menu.put("sub_button",mpAList);
         Map<String,Object> mapB_Menu = new HashMap<>();
         mapB_Menu.put("type","view");
-        mapB_Menu.put("name","会员中心");
-        mapB_Menu.put("url","http://15558f1v51.imwork.net/api/wx/user/members/center");
+        mapB_Menu.put("name","Liu");
+        mapB_Menu.put("url","http://brl.free.ngrok.cc/test");
         mpList.add(mapA_Menu);
         mpList.add(mapB_Menu);
         menu.put("button",mpList);
