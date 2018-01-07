@@ -1,9 +1,11 @@
 package com.scbrl.wechat.controller;
 
+import com.scbrl.util.HttpUtil;
 import com.scbrl.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +31,19 @@ public class TestController {
         RedisUtil.put("BruceLiu","Hello Word Wechat Demo");
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
+        System.err.println( HttpUtil.executeGet("http://127.0.0.1:8099/get",null));
         mv.addObject("msg",RedisUtil.get("BruceLiu"));
         return mv;
+    }
+
+    @RequestMapping("/get")
+    @ResponseBody
+    public String get(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+
+        return "Hi Bruce Liu " + System.currentTimeMillis();
     }
 
 }
