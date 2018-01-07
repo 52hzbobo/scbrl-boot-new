@@ -8,8 +8,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/scbrl
     characterEncoding: utf8
     characterSetResults: utf8
-    username: bruceliu
-    password: bruceliu
+    username: root
+    password: root
     # druid 连接池配置
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
