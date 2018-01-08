@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
-     * 启动时加载静态资源
+     * 启动时加载静态资源s
      * @param registry
      */
     @Override
